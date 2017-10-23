@@ -1,0 +1,25 @@
+{
+  "name": "qs/voucherif",
+  "description": "The extension allows to use vouchers stored in www.voucherify.io system",
+  "require": {
+    "magento/magento-composer-installer": "100.2.*",
+    "magento/module-catalog": "100.2.*",
+    "magento/module-sales": "100.2.*",
+    "magento/module-sales-rule": "100.2.*",
+    "magento/module-quote": "100.2.*",
+    "magento/module-checkout": "100.2.*",
+    "magento/module-customer": "100.2.*"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "autoload": {
+    "files": [ "registration.php" ],
+    "psr-4": {
+      "QS\\Voucherify\\": ""
+    }
+  }
+}

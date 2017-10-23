@@ -1,0 +1,10 @@
+<!-- ko if: isDisplayed() -->
+<tr class="totals voucher">
+    <th class="mark" scope="row">
+        <span class="title" data-bind="text: title"></span>
+    </th>
+    <td class="amount">
+        <span class="price" data-bind="text: getValue(), attr: {'data-th': name}"></span>
+    </td>
+</tr>
+<!-- /ko -->

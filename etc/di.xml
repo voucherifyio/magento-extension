@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="QS\Voucherify\Api\VoucherManagementInterface" type="QS\Voucherify\Model\VoucherManagement" />
+    <preference for="QS\Voucherify\Api\VoucherDataRepositoryInterface" type="QS\Voucherify\Model\VoucherDataRepository" />
+    <type name="Magento\Quote\Model\QuoteRepository\SaveHandler">
+        <plugin name="save_voucher_attributes" type="QS\Voucherify\Plugin\QuoteSave"/>
+    </type>
+    <type name="Magento\Quote\Model\QuoteRepository\LoadHandler">
+        <plugin name="load_voucher_attributes" type="QS\Voucherify\Plugin\QuoteLoad"/>
+    </type>
+    <type name="Magento\Checkout\Api\PaymentInformationManagementInterface">
+        <plugin name="qs_voucherify_order_place_before" type="QS\Voucherify\Plugin\OrderPlace"/>
+    </type>
+    <type name="Magento\Checkout\Api\GuestPaymentInformationManagementInterface">
+        <plugin name="qs_voucherify_guest_order_place_before" type="QS\Voucherify\Plugin\GuestOrderPlace"/>
+    </type>
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="qs_voucherify_order_get" type="QS\Voucherify\Plugin\OrderGet"/>
+    </type>
+</config>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="qsvoucherify" translate="label" sortOrder="800">
+            <label>Voucherify</label>
+        </tab>
+        <section id="qsvoucherify_general"  translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>QS_Voucherify::config</resource>
+            <class>separator-top</class>
+            <label>General</label>
+            <tab>qsvoucherify</tab>
+            <group id="behaviour" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Behaviour</label>
+                <field id="apply_source_type" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply voucher on</label>
+                    <source_model>QS\Voucherify\Model\Config\Source\AmountSourceType</source_model>
+                </field>
+                <field id="prevent_order_creating" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Prevent Order Creating</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Setting yes means stop order creating if voucher is not valid. Setting no means that order will be created without discount</comment>
+                </field>
+            </group>
+        </section>
+        <section id="qsvoucherify_api"  translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>QS_Voucherify::config</resource>
+            <class>separator-top</class>
+            <label>Api Configuration</label>
+            <tab>qsvoucherify</tab>
+            <group id="backend" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Application API settings</label>
+                <field id="api_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Id</label>
+                </field>
+                <field id="api_key" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Key</label>
+                </field>
+            </group>
+            <group id="frontend" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Client Side API settings</label>
+                <field id="api_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Id</label>
+                </field>
+                <field id="secret_key" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Secret Key</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
