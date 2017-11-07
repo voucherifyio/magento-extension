@@ -1,5 +1,5 @@
 <?php
-namespace QS\Voucherify\Model\Quote\Total;
+namespace Voucherify\Integration\Model\Quote\Total;
 
 use Magento\Quote\Model\Quote\Address\Total\AbstractTotal;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
@@ -9,13 +9,13 @@ use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Model\Quote\Address\Total as AddressTotal;
 use Magento\Quote\Api\Data\CartExtensionInterface;
 use Magento\Checkout\Exception;
-use QS\Voucherify\Api\VoucherDataRepositoryInterface;
-use QS\Voucherify\Helper\Data as Helper;
-use QS\Voucherify\Model\VoucherManagement;
+use Voucherify\Integration\Api\VoucherDataRepositoryInterface;
+use Voucherify\Integration\Helper\Data as Helper;
+use Voucherify\Integration\Model\VoucherManagement;
 
 /**
  * Class Voucherify
- * @package QS\Voucherify\Model\Quote\Total
+ * @package Voucherify\Integration\Model\Quote\Total
  */
 class Voucherify extends AbstractTotal
 {
@@ -38,7 +38,7 @@ class Voucherify extends AbstractTotal
     private $voucherDataRepository;
 
     /**
-     * @var \QS\Voucherify\Helper\Data
+     * @var \Voucherify\Integration\Helper\Data
      */
     private $helper;
 

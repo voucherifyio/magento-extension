@@ -1,12 +1,12 @@
 <?php
-namespace QS\Voucherify\Model\Invoice\Total;
+namespace Voucherify\Integration\Model\Invoice\Total;
 
 use Magento\Sales\Model\Order\Invoice\Total\AbstractTotal;
-use QS\Voucherify\Api\VoucherDataRepositoryInterface;
+use Voucherify\Integration\Api\VoucherDataRepositoryInterface;
 
 /**
  * Class Voucherify
- * @package QS\Voucherify\Model\Invoice\Total
+ * @package Voucherify\Integration\Model\Invoice\Total
  */
 class Voucherify extends AbstractTotal
 {

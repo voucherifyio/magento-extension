@@ -17,11 +17,11 @@
                                                         <item name="afterMethods" xsi:type="array">
                                                             <item name="children" xsi:type="array">
                                                                 <item name="discount" xsi:type="array">
-                                                                    <item name="component" xsi:type="string">QS_Voucherify/js/view/payment/voucher</item>
+                                                                    <item name="component" xsi:type="string">Voucherify_Integration/js/view/payment/voucher</item>
                                                                     <item name="children" xsi:type="array">
                                                                         <item name="errors" xsi:type="array">
                                                                             <item name="sortOrder" xsi:type="string">0</item>
-                                                                            <item name="component" xsi:type="string">QS_Voucherify/js/view/payment/voucher-messages</item>
+                                                                            <item name="component" xsi:type="string">Voucherify_Integration/js/view/payment/voucher-messages</item>
                                                                             <item name="displayArea" xsi:type="string">messages</item>
                                                                         </item>
                                                                     </item>
@@ -42,7 +42,7 @@
                                                     <item name="children" xsi:type="array">
                                                         <item name="discount" xsi:type="array">
                                                             <item name="sortOrder" xsi:type="string">35</item>
-                                                            <item name="component"  xsi:type="string">QS_Voucherify/js/view/summary/discount</item>
+                                                            <item name="component"  xsi:type="string">Voucherify_Integration/js/view/summary/discount</item>
                                                             <item name="config" xsi:type="array">
                                                                 <item name="title" xsi:type="string" translate="true">Discount</item>
                                                             </item>

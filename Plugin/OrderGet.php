@@ -1,13 +1,13 @@
 <?php
-namespace QS\Voucherify\Plugin;
+namespace Voucherify\Integration\Plugin;
 
-use QS\Voucherify\Api\VoucherDataRepositoryInterface;
+use Voucherify\Integration\Api\VoucherDataRepositoryInterface;
 use Magento\Sales\Model\OrderRepository;
 use Magento\Sales\Model\Order;
 
 /**
  * Class OrderGet
- * @package QS\Voucherify\Plugin
+ * @package Voucherify\Integration\Plugin
  */
 class OrderGet
 {

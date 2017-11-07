@@ -1,5 +1,5 @@
 <?php
-namespace QS\Voucherify\Helper;
+namespace Voucherify\Integration\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
@@ -9,7 +9,7 @@ use Voucherify\VoucherifyClient;
 
 /**
  * Class Api
- * @package QS\Voucherify\Helper
+ * @package Voucherify\Integration\Helper
  */
 class Api extends  AbstractHelper
 {
@@ -50,8 +50,8 @@ class Api extends  AbstractHelper
     public function getClient()
     {
         if ($this->client === null) {
-            $apiId = $this->scopeConfig->getValue('qsvoucherify_api/backend/api_id');
-            $apiKey = $this->scopeConfig->getValue('qsvoucherify_api/backend/api_key');
+            $apiId = $this->scopeConfig->getValue('voucherifyintegration_api/backend/api_id');
+            $apiKey = $this->scopeConfig->getValue('voucherifyintegration_api/backend/api_key');
             if ($apiId && $apiKey) {
                 $this->client = $this->objectManager->create(VoucherifyClient::class, [
                     'apiId' => $apiId,

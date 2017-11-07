@@ -1,12 +1,12 @@
 <?php
-namespace QS\Voucherify\Model\ResourceModel;
+namespace Voucherify\Integration\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 
 /**
  * Class VoucherData
- * @package QS\Voucherify\Model\ResourceModel\Quote
+ * @package Voucherify\Integration\Model\ResourceModel\Quote
  */
 class VoucherData extends AbstractDb
 {
@@ -26,6 +26,6 @@ class VoucherData extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('qs_voucherify_quote_data', 'entity_id');
+        $this->_init('voucherify_integration_quote_data', 'entity_id');
     }
 }

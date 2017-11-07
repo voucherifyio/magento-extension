@@ -1,5 +1,5 @@
 <?php
-namespace QS\Voucherify\Helper;
+namespace Voucherify\Integration\Helper;
 
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Quote\Api\CartRepositoryInterface;
@@ -7,13 +7,13 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Checkout\Model\Session as CheckoutSession;
-use QS\Voucherify\Helper\Api as VoucherifyApi;
-use QS\Voucherify\Helper\Data as Helper;
-use QS\Voucherify\Model\VoucherManagement;
+use Voucherify\Integration\Helper\Api as VoucherifyApi;
+use Voucherify\Integration\Helper\Data as Helper;
+use Voucherify\Integration\Model\VoucherManagement;
 
 /**
  * Class Validator
- * @package QS\Voucherify\Helper
+ * @package Voucherify\Integration\Helper
  */
 class Validator extends AbstractHelper
 {
@@ -29,7 +29,7 @@ class Validator extends AbstractHelper
     private $client;
 
     /**
-     * @var \QS\Voucherify\Helper\Data
+     * @var \Voucherify\Integration\Helper\Data
      */
     private $helper;
 
@@ -102,7 +102,7 @@ class Validator extends AbstractHelper
                 $quote->getExtensionAttributes()->setVoucherPercentOff(null);
                 $this->quoteRepository->save($quote->collectTotals());
 
-                if ($this->scopeConfig->getValue('qsvoucherify_general/behaviour/prevent_order_creating')) {
+                if ($this->scopeConfig->getValue('voucherifyintegration_general/behaviour/prevent_order_creating')) {
                     throw new CouldNotSaveException(__("Coupon code is no longer available"), null, 45689);
                 } else {
                     $this->_checkoutSession->setInvalidatedVoucher($voucherCode);

@@ -1,11 +1,11 @@
 <?php
-namespace QS\Voucherify\Model\Config\Source;
+namespace Voucherify\Integration\Model\Config\Source;
 
 use \Magento\Framework\Option\ArrayInterface;
 
 /**
  * Class AmountSourceType
- * @package QS\Voucherify\Model\Config\Source
+ * @package Voucherify\Integration\Model\Config\Source
  */
 class AmountSourceType implements ArrayInterface
 {

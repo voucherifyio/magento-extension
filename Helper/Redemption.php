@@ -1,14 +1,14 @@
 <?php
-namespace QS\Voucherify\Helper;
+namespace Voucherify\Integration\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
-use QS\Voucherify\Helper\Api as VoucherifyApi;
-use QS\Voucherify\Helper\Data as Helper;
+use Voucherify\Integration\Helper\Api as VoucherifyApi;
+use Voucherify\Integration\Helper\Data as Helper;
 
 /**
  * Class Redemption
- * @package QS\Voucherify\Helper
+ * @package Voucherify\Integration\Helper
  */
 class Redemption extends AbstractHelper
 {
@@ -19,7 +19,7 @@ class Redemption extends AbstractHelper
     private $client;
 
     /**
-     * @var \QS\Voucherify\Helper\Data
+     * @var \Voucherify\Integration\Helper\Data
      */
     private $helper;
 

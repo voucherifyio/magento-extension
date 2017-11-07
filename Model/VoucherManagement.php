@@ -1,8 +1,8 @@
 <?php
 
-namespace QS\Voucherify\Model;
+namespace Voucherify\Integration\Model;
 
-use \QS\Voucherify\Api\VoucherManagementInterface;
+use \Voucherify\Integration\Api\VoucherManagementInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;

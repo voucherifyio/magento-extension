@@ -1,9 +1,9 @@
 <?php
-namespace QS\Voucherify\Helper;
+namespace Voucherify\Integration\Helper;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Helper\AbstractHelper;
-use QS\Voucherify\Model\Config\Source\AmountSourceType;
+use Voucherify\Integration\Model\Config\Source\AmountSourceType;
 
 class Data extends AbstractHelper
 {
@@ -115,7 +115,7 @@ class Data extends AbstractHelper
      */
     public function getDiscountableAmount($baseSubtotal, $baseShippingAmount, $baseTaxAmount)
     {
-        switch ($this->scopeConfig->getValue('qsvoucherify_general/behaviour/apply_source_type')) {
+        switch ($this->scopeConfig->getValue('voucherifyintegration_general/behaviour/apply_source_type')) {
             case AmountSourceType::SUBTOTAL :
             default:
                 $discountableAmount = $baseSubtotal;

@@ -3,15 +3,15 @@ define([
     'jquery',
     'Magento_Checkout/js/model/quote',
     'Magento_Checkout/js/model/error-processor',
-    'QS_Voucherify/js/model/payment/voucher-messages',
+    'Voucherify_Integration/js/model/payment/voucher-messages',
     'mage/storage',
     'mage/translate',
     'Magento_Checkout/js/action/get-payment-information',
     'Magento_Checkout/js/model/totals',
     'Magento_Checkout/js/model/full-screen-loader',
     'Magento_Customer/js/model/customer',
-    'QS_Voucherify/js/action/default/set-coupon-code',
-    'QS_Voucherify/js/lib/voucherify'
+    'Voucherify_Integration/js/action/default/set-coupon-code',
+    'Voucherify_Integration/js/lib/voucherify'
 ], function (ko, $, quote, errorProcessor, messageContainer, storage, $t, getPaymentInformationAction,
              totals, fullScreenLoader, customer, setCouponCodeAction
 ) {
