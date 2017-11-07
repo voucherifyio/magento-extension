@@ -1,17 +1,17 @@
 <?php
-namespace QS\Voucherify\Block;
+namespace Voucherify\Integration\Block;
 
 use Magento\Framework\View\Element\Text;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Pricing\Helper\Data as PriceHelper;
-use QS\Voucherify\Api\VoucherDataRepositoryInterface;
-use QS\Voucherify\Helper\Data as Helper;
+use Voucherify\Integration\Api\VoucherDataRepositoryInterface;
+use Voucherify\Integration\Helper\Data as Helper;
 
 /**
  * Class SuccessMessages
- * @package QS\Voucherify\Block
+ * @package Voucherify\Integration\Block
  */
 class SuccessMessages extends Text
 {
@@ -36,7 +36,7 @@ class SuccessMessages extends Text
     private $voucherDataRepository;
 
     /**
-     * @var \QS\Voucherify\Helper\Data
+     * @var \Voucherify\Integration\Helper\Data
      */
     private $helper;
 

@@ -1,11 +1,11 @@
 <?php
-namespace QS\Voucherify\Api;
+namespace Voucherify\Integration\Api;
 
-use QS\Voucherify\Model\VoucherData;
+use Voucherify\Integration\Model\VoucherData;
 
 /**
  * Interface VoucherDataRepositoryInterface
- * @package QS\Voucherify\Api
+ * @package Voucherify\Integration\Api
  */
 interface VoucherDataRepositoryInterface
 {

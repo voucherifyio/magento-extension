@@ -1,5 +1,5 @@
 {
-  "name": "qs/voucherify",
+  "name": "voucherify/integration",
   "description": "The extension allows to use vouchers stored in www.voucherify.io system",
   "require": {
     "magento/module-catalog": "100.2.*",
@@ -18,7 +18,7 @@
   "autoload": {
     "files": [ "registration.php" ],
     "psr-4": {
-      "QS\\Voucherify\\": ""
+      "Voucherify\\Integration\\": ""
     }
   }
 }

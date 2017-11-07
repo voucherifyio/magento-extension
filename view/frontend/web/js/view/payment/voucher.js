@@ -3,9 +3,9 @@ define([
     'ko',
     'uiComponent',
     'Magento_Checkout/js/model/quote',
-    'QS_Voucherify/js/action/apply-voucher',
-    'QS_Voucherify/js/action/cancel-voucher',
-    'QS_Voucherify/js/action/clean-voucher'
+    'Voucherify_Integration/js/action/apply-voucher',
+    'Voucherify_Integration/js/action/cancel-voucher',
+    'Voucherify_Integration/js/action/clean-voucher'
 ], function ($, ko, Component, quote, applyAction, cancelAction, cleanAction) {
     'use strict';
 
@@ -45,7 +45,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'QS_Voucherify/payment/voucher'
+            template: 'Voucherify_Integration/payment/voucher'
         },
 
         voucherCode: voucherCode,

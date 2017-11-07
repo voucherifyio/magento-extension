@@ -1,13 +1,13 @@
 <?php
-namespace QS\Voucherify\Observer;
+namespace Voucherify\Integration\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer as EventObserver;
-use QS\Voucherify\Helper\Redemption;
+use Voucherify\Integration\Helper\Redemption;
 
 /**
  * Class SaveOrderAfterSubmitObserver
- * @package QS\Voucherify\Observer
+ * @package Voucherify\Integration\Observer
  */
 class SaveOrderAfterSubmitObserver implements ObserverInterface
 {

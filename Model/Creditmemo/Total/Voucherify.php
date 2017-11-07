@@ -1,12 +1,12 @@
 <?php
-namespace QS\Voucherify\Model\Creditmemo\Total;
+namespace Voucherify\Integration\Model\Creditmemo\Total;
 
 use Magento\Sales\Model\Order\Creditmemo\Total\AbstractTotal;
-use QS\Voucherify\Api\VoucherDataRepositoryInterface;
+use Voucherify\Integration\Api\VoucherDataRepositoryInterface;
 
 /**
  * Class Voucherify
- * @package QS\Voucherify\Model\Creditmemo\Total
+ * @package Voucherify\Integration\Model\Creditmemo\Total
  */
 class Voucherify extends AbstractTotal
 {

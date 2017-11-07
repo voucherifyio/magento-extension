@@ -1,10 +1,10 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <qsvoucherify_general>
+        <voucherifyintegration_general>
             <behaviour>
                 <apply_source_type>subtotal</apply_source_type>
                 <prevent_order_creating>1</prevent_order_creating>
             </behaviour>
-        </qsvoucherify_general>
+        </voucherifyintegration_general>
     </default>
 </config>

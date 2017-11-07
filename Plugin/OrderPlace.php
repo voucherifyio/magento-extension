@@ -1,15 +1,15 @@
 <?php
-namespace QS\Voucherify\Plugin;
+namespace Voucherify\Integration\Plugin;
 
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\PaymentInterface;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Checkout\Api\PaymentInformationManagementInterface;
-use QS\Voucherify\Helper\Validator as VoucherValidator;
+use Voucherify\Integration\Helper\Validator as VoucherValidator;
 
 /**
  * Class OrderPlace
- * @package QS\Voucherify\Plugin
+ * @package Voucherify\Integration\Plugin
  */
 class OrderPlace
 {

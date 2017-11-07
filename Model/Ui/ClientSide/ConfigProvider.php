@@ -1,5 +1,5 @@
 <?php
-namespace QS\Voucherify\Model\Ui\ClientSide;
+namespace Voucherify\Integration\Model\Ui\ClientSide;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -32,11 +32,11 @@ class ConfigProvider implements ConfigProviderInterface
         return [
             'voucherify' => [
                 'clientSide' => [
-                    'apiId' => $this->scopeConfig->getValue('qsvoucherify_api/frontend/api_id'),
-                    'secretKey' => $this->scopeConfig->getValue('qsvoucherify_api/frontend/secret_key')
+                    'apiId' => $this->scopeConfig->getValue('voucherifyintegration_api/frontend/api_id'),
+                    'secretKey' => $this->scopeConfig->getValue('voucherifyintegration_api/frontend/secret_key')
                 ],
                 'behaviour' => [
-                    'apply_source_type' => $this->scopeConfig->getValue('qsvoucherify_general/behaviour/apply_source_type')
+                    'apply_source_type' => $this->scopeConfig->getValue('voucherifyintegration_general/behaviour/apply_source_type')
                 ]
             ]
         ];

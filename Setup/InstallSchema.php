@@ -1,5 +1,5 @@
 <?php
-namespace QS\Voucherify\Setup;
+namespace Voucherify\Integration\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -7,7 +7,7 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 
 /**
  * Class InstallSchema
- * @package QS\Voucherify\Setup
+ * @package Voucherify\Integration\Setup
  */
 class InstallSchema implements InstallSchemaInterface
 {
@@ -21,7 +21,7 @@ class InstallSchema implements InstallSchemaInterface
         $installer = $setup;
         $installer->startSetup();
 
-        $tableName = 'qs_voucherify_quote_data';
+        $tableName = 'voucherify_integration_quote_data';
         $installer->getConnection()->dropTable($installer->getTable($tableName));
 
         $table = $installer->getConnection()->newTable(
@@ -69,10 +69,10 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable' => true],
             'Voucher Amount Off'
         )->addIndex(
-            $installer->getIdxName('qs_voucherify_quote_data', ['quote_id']),
+            $installer->getIdxName('voucherify_integration_quote_data', ['quote_id']),
             ['quote_id']
         )->addForeignKey(
-            $installer->getFkName('qs_voucherify_quote_data', 'quote_id', 'quote', 'entity_id'),
+            $installer->getFkName('voucherify_integration_quote_data', 'quote_id', 'quote', 'entity_id'),
             'quote_id',
             $installer->getTable('quote'),
             'entity_id',
