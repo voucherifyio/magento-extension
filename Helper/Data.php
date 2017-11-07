@@ -29,8 +29,9 @@ class Data extends AbstractHelper
      */
     public function getCustomerDataParams($quote, $email = null)
     {
-        $streetLine1 = isset($quote->getBillingAddress()->getStreet()[0])?$quote->getBillingAddress()->getStreet()[0]:null;
-        $streetLine2 = isset($quote->getBillingAddress()->getStreet()[1])?$quote->getBillingAddress()->getStreet()[1]:null;
+        $streetArray = $quote->getBillingAddress()->getStreet();
+        $streetLine1 = isset($streetArray[0])?$streetArray[0]:null;
+        $streetLine2 = isset($streetArray[1])?$streetArray[1]:null;
 
         if (is_null($email)) {
             $email = $quote->getCustomerEmail();

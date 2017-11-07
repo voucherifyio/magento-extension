@@ -59,6 +59,7 @@ class GuestOrderPlace
     /**
      * @param GuestPaymentInformationManagementInterface $subject
      * @param $cartId
+     * @param $email
      * @param PaymentInterface $paymentMethod
      * @param AddressInterface $billingAddress
      */
