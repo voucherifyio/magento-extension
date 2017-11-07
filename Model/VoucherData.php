@@ -1,11 +1,11 @@
 <?php
-namespace QS\Voucherify\Model;
+namespace Voucherify\Integration\Model;
 
 use \Magento\Framework\Model\AbstractModel;
 
 /**
  * Class VoucherData
- * @package QS\Voucherify\Model\Quote
+ * @package Voucherify\Integration\Model\Quote
  */
 class VoucherData extends AbstractModel
 {
@@ -13,6 +13,6 @@ class VoucherData extends AbstractModel
      * Set resource model
      */
     protected function _construct(){
-        $this->_init('QS\Voucherify\Model\ResourceModel\VoucherData');
+        $this->_init('Voucherify\Integration\Model\ResourceModel\VoucherData');
     }
 }

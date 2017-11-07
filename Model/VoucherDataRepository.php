@@ -1,13 +1,13 @@
 <?php
-namespace QS\Voucherify\Model;
-use QS\Voucherify\Api\VoucherDataRepositoryInterface;
-use QS\Voucherify\Model\ResourceModel\VoucherData as VoucherDataResource;
+namespace Voucherify\Integration\Model;
+use Voucherify\Integration\Api\VoucherDataRepositoryInterface;
+use Voucherify\Integration\Model\ResourceModel\VoucherData as VoucherDataResource;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 
 /**
  * Class VoucherDataRepository
- * @package QS\Voucherify\Model
+ * @package Voucherify\Integration\Model
  */
 class VoucherDataRepository implements VoucherDataRepositoryInterface
 {

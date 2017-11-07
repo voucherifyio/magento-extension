@@ -1,5 +1,5 @@
 <?php
-namespace QS\VOucherify\Api;
+namespace Voucherify\Integration\Api;
 
 /**
  * Voucher management service interface.

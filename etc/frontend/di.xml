@@ -4,7 +4,7 @@
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="qs_voucherify_config_provider" xsi:type="object">QS\Voucherify\Model\Ui\ClientSide\ConfigProvider</item>
+                <item name="voucherify_integration_config_provider" xsi:type="object">Voucherify\Integration\Model\Ui\ClientSide\ConfigProvider</item>
             </argument>
         </arguments>
     </type>

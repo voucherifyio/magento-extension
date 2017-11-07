@@ -6,7 +6,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'QS_Voucherify/summary/discount'
+            template: 'Voucherify_Integration/summary/discount'
         },
         totals: quote.getTotals(),
 

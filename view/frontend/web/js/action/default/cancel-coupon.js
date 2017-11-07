@@ -11,7 +11,7 @@ define([
     'Magento_Checkout/js/model/quote',
     'Magento_Checkout/js/model/resource-url-manager',
     'Magento_Checkout/js/model/error-processor',
-    'QS_Voucherify/js/model/payment/voucher-messages',
+    'Voucherify_Integration/js/model/payment/voucher-messages',
     'mage/storage',
     'Magento_Checkout/js/action/get-payment-information',
     'Magento_Checkout/js/model/totals',
