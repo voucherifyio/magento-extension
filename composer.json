@@ -1,5 +1,5 @@
 {
-  "name": "qs/voucherif",
+  "name": "qs/voucherify",
   "description": "The extension allows to use vouchers stored in www.voucherify.io system",
   "require": {
     "magento/magento-composer-installer": "100.2.*",
