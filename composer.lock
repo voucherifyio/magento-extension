@@ -1,0 +1,61 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "53b129074e9428acd1db44a9898297e4",
+    "content-hash": "72dd6d57f27bae55f095f7d7cd13ff99",
+    "packages": [
+        {
+            "name": "rspective/voucherify",
+            "version": "v1.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voucherifyio/voucherify-php-sdk.git",
+                "reference": "724e9345fd32cc603d098775b825e17191c12a2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voucherifyio/voucherify-php-sdk/zipball/724e9345fd32cc603d098775b825e17191c12a2e",
+                "reference": "724e9345fd32cc603d098775b825e17191c12a2e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*"
+            },
+            "require-dev": {
+                "php-mock/php-mock": "1.0.*",
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Voucherify\\": "./src",
+                    "Voucherify\\Test\\Helpers\\": "./test/helpers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP SDK for Voucherify. Please visit: www.voucherify.io",
+            "homepage": "http://www.voucherify.io/",
+            "keywords": [
+                "rspective",
+                "voucher",
+                "voucherify"
+            ],
+            "time": "2017-07-24 21:45:27"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

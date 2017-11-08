@@ -2,12 +2,7 @@
   "name": "voucherify/integration",
   "description": "The extension allows to use vouchers stored in www.voucherify.io system",
   "require": {
-    "magento/module-catalog": "100.2.*",
-    "magento/module-sales": "100.2.*",
-    "magento/module-sales-rule": "100.2.*",
-    "magento/module-quote": "100.2.*",
-    "magento/module-checkout": "100.2.*",
-    "magento/module-customer": "100.2.*"
+    "rspective/voucherify": "v1.7.*"
   },
   "type": "magento2-module",
   "version": "1.0.0",
