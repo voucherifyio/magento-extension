@@ -11,7 +11,7 @@ use Voucherify\VoucherifyClient;
  * Class Api
  * @package Voucherify\Integration\Helper
  */
-class Api extends  AbstractHelper
+class Api extends AbstractHelper
 {
     /**
      * @var ObjectManagerInterface
@@ -37,8 +37,8 @@ class Api extends  AbstractHelper
         Context $context,
         ObjectManagerInterface $objectManager,
         ScopeConfigInterface $scopeConfig
-    )
-    {
+    ) {
+    
         $this->objectManager = $objectManager;
         $this->scopeConfig = $scopeConfig;
         parent::__construct($context);

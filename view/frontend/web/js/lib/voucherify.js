@@ -20,7 +20,8 @@ window.Voucherify = (function (window, document, $) {
 
     var EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    function isValidResponseStructure(data) {
+    function isValidResponseStructure(data)
+    {
         return data && (typeof(data.valid) === "boolean" // validate
             || typeof(data.result) === "string" // redeem
             || typeof(data.voucher) === "object" // publish
@@ -118,7 +119,7 @@ window.Voucherify = (function (window, document, $) {
             request.setRequestHeader("X-Client-Token", OPTIONS.token);
             request.setRequestHeader("X-Voucherify-Channel", "Voucherify.js");
 
-            request.onload = function() {
+            request.onload = function () {
                 var result = null;
 
                 if (request.status >= 200 && request.status < 400) {
@@ -168,29 +169,34 @@ window.Voucherify = (function (window, document, $) {
         };
     }
 
-    function roundMoney(value) {
+    function roundMoney(value)
+    {
         return Math.round(value * (100 + 0.001)) / 100;
     }
 
-    function validatePercentDiscount(discount) {
+    function validatePercentDiscount(discount)
+    {
         if (!discount || discount < 0 || discount > 100) {
             throw new Error('Invalid voucher, percent discount should be between 0-100.');
         }
     }
 
-    function validateAmountDiscount(discount) {
+    function validateAmountDiscount(discount)
+    {
         if (!discount || discount < 0) {
             throw new Error("Invalid voucher, amount discount must be higher than zero.");
         }
     }
 
-    function validateUnitDiscount(discount) {
+    function validateUnitDiscount(discount)
+    {
         if (!discount || discount < 0) {
             throw new Error("Invalid voucher, unit discount must be higher than zero.");
         }
     }
 
-    function isValidInit(options) {
+    function isValidInit(options)
+    {
         if (!options.applicationId) {
             console.error("Voucherify.js ERROR: Missing Client Application ID.");
             return false;
@@ -247,21 +253,21 @@ window.Voucherify = (function (window, document, $) {
             }
 
             if (items) {
-                queryString += "&" + items.map(function(item, index) {
-                    return Object.keys(item).map(function(key) {
+                queryString += "&" + items.map(function (item, index) {
+                    return Object.keys(item).map(function (key) {
                         return encodeURIComponent("item[" + index + "][" + key + "]") + "=" + encodeURIComponent(item[key]);
                     }).join("&");
                 }).join("&");
             }
 
             if (metadata) {
-                queryString += "&" + Object.keys(metadata).map(function(key) {
+                queryString += "&" + Object.keys(metadata).map(function (key) {
                     return encodeURIComponent("metadata[" + key + "]") + "=" + encodeURIComponent(metadata[key]);
                 }).join("&");
             }
 
             if (customer) {
-                queryString += "&" + Object.keys(customer).map(function(key) {
+                queryString += "&" + Object.keys(customer).map(function (key) {
                     return encodeURIComponent("customer[" + key + "]") + "=" + encodeURIComponent(customer[key]);
                 }).join("&");
             }
@@ -326,7 +332,7 @@ window.Voucherify = (function (window, document, $) {
             }
 
             var queryString = "?" + Object.keys(filters)
-                    .map(function(key) {
+                    .map(function (key) {
                         return encodeURIComponent(key) + "=" + encodeURIComponent(filters[key])
                     })
                     .join("&");
@@ -353,25 +359,22 @@ window.Voucherify = (function (window, document, $) {
                     validatePercentDiscount(discount);
                     var priceDiscount = basePrice * (discount / 100);
                     return roundMoney(basePrice - priceDiscount);
-
                 } else if (voucher.discount.type === 'AMOUNT') {
                     discount = voucher.discount.amount_off / e;
                     validateAmountDiscount(discount);
                     var newPrice = basePrice - discount;
                     return roundMoney(newPrice > 0 ? newPrice : 0);
-
                 } else if (voucher.discount.type === 'UNIT') {
                     discount = voucher.discount.unit_off;
                     validateUnitDiscount(discount);
                     var newPrice = basePrice - unitPrice * discount;
                     return roundMoney(newPrice > 0 ? newPrice : 0);
-
                 } else {
                     throw new Error("Unsupported discount type.");
                 }
             },
 
-            calculateDiscount: function(basePrice, voucher, unitPrice) {
+            calculateDiscount: function (basePrice, voucher, unitPrice) {
                 var e = 100; // Number of digits after the decimal separator.
                 var discount;
 
@@ -388,44 +391,45 @@ window.Voucherify = (function (window, document, $) {
                     discount = voucher.discount.percent_off;
                     validatePercentDiscount(discount);
                     return roundMoney(basePrice * (discount / 100));
-
                 } else if (voucher.discount.type === 'AMOUNT') {
                     discount = voucher.discount.amount_off / e;
                     validateAmountDiscount(discount);
                     var newPrice = basePrice - discount;
                     return roundMoney(newPrice > 0 ? discount : basePrice);
-
                 } else if (voucher.discount.type === 'UNIT') {
                     discount = voucher.discount.unit_off;
                     validateUnitDiscount(discount);
                     var priceDiscount = unitPrice * discount;
                     return roundMoney(priceDiscount > basePrice ? basePrice : priceDiscount);
-
                 } else {
                     throw new Error("Unsupported discount type.");
                 }
             }
         },
-        render: function(selector, options) {
+        render: function (selector, options) {
             var $element = $(selector);
             if (!$element || !$element.length) {
                 throw new Error("Element '" + selector + "' cannot be found");
             }
             options = options || {};
 
-            function getCapitalizedName(name) {
+            function getCapitalizedName(name)
+            {
                 return name.charAt(0).toUpperCase() + name.slice(1);
             }
 
-            function getPropertyName(prefix, name) {
+            function getPropertyName(prefix, name)
+            {
                 return prefix + getCapitalizedName(name);
             }
 
-            function getConfigProperty(prefix, name) {
+            function getConfigProperty(prefix, name)
+            {
                 return options[getPropertyName(prefix, name)];
             }
 
-            function create$control(type, name, $container, config) {
+            function create$control(type, name, $container, config)
+            {
                 config = config || {};
                 var $control = null;
                 var configured$control = getConfigProperty("selector", name);
@@ -476,15 +480,15 @@ window.Voucherify = (function (window, document, $) {
             var classInvalidAnimation = options.classInvalidAnimation === "string" ? options.classInvalidAnimation : "voucherifyAnimationShake";
             var classValidAnimation = options.classValidAnimation === "string" ? options.classValidAnimation : "voucherifyAnimationTada";
 
-            $code.on("keyup", function(event) {
+            $code.on("keyup", function (event) {
                 $code.toggleClass(classInvalidAnimation, false);
             });
 
-            $amount.on("keyup", function(event) {
+            $amount.on("keyup", function (event) {
                 $amount.toggleClass(classInvalidAnimation, false);
             });
 
-            $validate.on("click", function(event) {
+            $validate.on("click", function (event) {
                 $discountType.val("");
                 $amountOff.val("");
                 $unitOff.val("");
@@ -497,7 +501,7 @@ window.Voucherify = (function (window, document, $) {
                 if (!$code.val()) {
                     $code.toggleClass(classInvalidAnimation, true)
                         .delay(1000)
-                        .queue(function(){
+                        .queue(function () {
                             $code.toggleClass(classInvalidAnimation, false);
                             $code.dequeue();
                         });
@@ -509,15 +513,14 @@ window.Voucherify = (function (window, document, $) {
                     amount: parseInt(parseFloat($amount.val().replace(/\,/, ".")) * 100)
                 };
 
-                self.validate(payload, function(response) {
+                self.validate(payload, function (response) {
                     if (!response || !response.valid) {
-
                         var setFieldInvalid = function ($field) {
                             $field.toggleClass(classInvalid, true);
                             $field.toggleClass(classValid, false);
                             $field.toggleClass(classInvalidAnimation, true)
                                 .delay(1000)
-                                .queue(function(){
+                                .queue(function () {
                                     $field.toggleClass(classInvalidAnimation, false);
                                     $field.dequeue();
                                 });
@@ -587,17 +590,20 @@ window.Voucherify = (function (window, document, $) {
                 throw new Error("Option campaignName is not specified");
             }
 
-            function contains(arr, prop) {
+            function contains(arr, prop)
+            {
                 return Array.prototype.some.call(arr || [], function (field) {
                     return field.name === prop;
                 });
             }
 
-            function containsCustomer(prop) {
+            function containsCustomer(prop)
+            {
                 return contains(options.customerFields, prop);
             }
 
-            function isRequired(prop) {
+            function isRequired(prop)
+            {
                 var field = Array.prototype.find.call(options.customerFields || [], function (field) {
                     return field.name === prop;
                 });
@@ -605,19 +611,23 @@ window.Voucherify = (function (window, document, $) {
                 return field && field.required || false;
             }
 
-            function getCapitalizedName(name) {
+            function getCapitalizedName(name)
+            {
                 return name.charAt(0).toUpperCase() + name.slice(1);
             }
 
-            function getPropertyName(prefix, name) {
+            function getPropertyName(prefix, name)
+            {
                 return prefix + getCapitalizedName(name);
             }
 
-            function getConfigProperty(prefix, name) {
+            function getConfigProperty(prefix, name)
+            {
                 return options[getPropertyName(prefix, name)];
             }
 
-            function create$control(type, name, $container, config) {
+            function create$control(type, name, $container, config)
+            {
                 config = config || {};
                 var $control = null;
                 var configured$control = getConfigProperty("selector", name);
@@ -682,12 +692,13 @@ window.Voucherify = (function (window, document, $) {
             var classInvalidAnimation = options.classInvalidAnimation === "string" ? options.classInvalidAnimation : "voucherifyAnimationShake";
             var classValidAnimation = options.classValidAnimation === "string" ? options.classValidAnimation : "voucherifyAnimationTada";
 
-            function error$control($control) {
+            function error$control($control)
+            {
                 $control.toggleClass(classInvalid, true);
                 $control.toggleClass(classValid, false);
                 $control.toggleClass(classInvalidAnimation, true)
                     .delay(1000)
-                    .queue(function(){
+                    .queue(function () {
                         $control.toggleClass(classInvalidAnimation, false);
                         $control.toggleClass(classInvalid, false);
                         $control.toggleClass(classValid, false);
@@ -695,7 +706,7 @@ window.Voucherify = (function (window, document, $) {
                     });
             }
 
-            $publish.on("click", function(event) {
+            $publish.on("click", function (event) {
                 $tracking.val("");
 
                 $publish.toggleClass(classInvalid, false);
@@ -783,7 +794,7 @@ window.Voucherify = (function (window, document, $) {
                     payload.customer["address"]["country"] = $customerCountry.val()
                 }
 
-                self.publish(options.campaignName, payload, function(response) {
+                self.publish(options.campaignName, payload, function (response) {
                     if (!response || !response.voucher || !response.voucher.code) {
                         var context         = response.context || {};
                         var responseJSON    = context.responseJSON || {};
@@ -828,7 +839,7 @@ window.Voucherify = (function (window, document, $) {
         }
     };
 
-    (function(funcName, baseObj) {
+    (function (funcName, baseObj) {
         "use strict";
 
         if (!baseObj) {
@@ -841,7 +852,8 @@ window.Voucherify = (function (window, document, $) {
         var readyFired = false;
         var readyEventHandlersInstalled = false;
 
-        function ready() {
+        function ready()
+        {
             if (!readyFired) {
                 readyFired = true;
                 for (var i = 0; i < readyList.length; i++) {
@@ -851,18 +863,20 @@ window.Voucherify = (function (window, document, $) {
             }
         }
 
-        function readyStateChange() {
-            if ( document.readyState === "complete" ) {
+        function readyStateChange()
+        {
+            if (document.readyState === "complete" ) {
                 ready();
             }
         }
 
-        baseObj[funcName] = function(callback, context) {
+        baseObj[funcName] = function (callback, context) {
             if (typeof callback !== "function") {
                 throw new TypeError("callback for docReady(fn) must be a function");
             }
             if (readyFired) {
-                setTimeout(function() {callback(context);}, 1);
+                setTimeout(function () {
+callback(context);}, 1);
                 return;
             } else {
                 readyList.push({fn: callback, ctx: context});
@@ -882,7 +896,8 @@ window.Voucherify = (function (window, document, $) {
         }
     })("docReady", window);
 
-    function renderIframes() {
+    function renderIframes()
+    {
         var host = "https://app.voucherify.io";
 
         var common_attributes = [
@@ -1009,7 +1024,7 @@ window.Voucherify = (function (window, document, $) {
             encodeOptions: function (options) {
                 var query_parameters = [];
 
-                Object.keys(options).forEach(function(option_key) {
+                Object.keys(options).forEach(function (option_key) {
                     query_parameters.push("[options]["+option_key+"]="+encodeURIComponent(options[option_key]));
                 });
 
@@ -1018,7 +1033,8 @@ window.Voucherify = (function (window, document, $) {
         };
 
 
-        function RenderIframe(element, options) {
+        function RenderIframe(element, options)
+        {
             var self = this;
 
             self._element = element;

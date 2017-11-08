@@ -38,11 +38,10 @@ class SaveOrderAfterSubmitObserver implements ObserverInterface
         $quote = $observer->getEvent()->getData('quote');
         $extensionAttributes = $quote->getExtensionAttributes();
 
-        if ( $extensionAttributes && !is_null($extensionAttributes->getVoucherCode()) ) {
+        if ($extensionAttributes && !is_null($extensionAttributes->getVoucherCode())) {
             $this->redemption->redeemVoucher($quote, $order, $extensionAttributes);
         }
 
         return $this;
     }
-
 }

@@ -69,7 +69,7 @@ class GuestOrderPlace
         $email,
         PaymentInterface $paymentMethod,
         AddressInterface $billingAddress = null
-    ){
+    ) {
         $cartId = $this->getRealCartId($cartId);
         /** @var  \Magento\Quote\Model\Quote $quote */
         $quote = $this->quoteRepository->getActive($cartId);

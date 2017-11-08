@@ -25,7 +25,7 @@ define([
         isApplied,
         isOriginal = ko.observable(false);
 
-    if(voucherData!=null && voucherData.voucher_code!=null) {
+    if (voucherData!=null && voucherData.voucher_code!=null) {
         voucherCode(voucherData.voucher_code);
     }
 

@@ -17,8 +17,17 @@ define([
     'Magento_Checkout/js/model/totals',
     'mage/translate',
     'Magento_Checkout/js/model/full-screen-loader'
-], function ($, quote, urlManager, errorProcessor, messageContainer, storage, getPaymentInformationAction, totals, $t,
-  fullScreenLoader
+], function (
+    $,
+    quote,
+    urlManager,
+    errorProcessor,
+    messageContainer,
+    storage,
+    getPaymentInformationAction,
+    totals,
+    $t,
+    fullScreenLoader
 ) {
     'use strict';
 

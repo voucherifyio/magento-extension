@@ -18,7 +18,8 @@ class QuoteSave
     /**
      * @param VoucherDataRepositoryInterface $voucherDataRepository
      */
-    public function __construct(VoucherDataRepositoryInterface $voucherDataRepository){
+    public function __construct(VoucherDataRepositoryInterface $voucherDataRepository)
+    {
         $this->voucherDataRepository = $voucherDataRepository;
     }
 
@@ -32,7 +33,7 @@ class QuoteSave
         $quote
     ) {
         $extensionAttributes = $quote->getExtensionAttributes();
-        if($extensionAttributes){
+        if ($extensionAttributes) {
             $voucherData = $this->voucherDataRepository->getByQuoteId($quote->getId());
             if ($extensionAttributes->getVoucherCode() != null) {
                 $voucherData->setQuoteId($quote->getId());

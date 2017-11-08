@@ -32,8 +32,8 @@ class Redemption extends AbstractHelper
         Context $context,
         VoucherifyApi $api,
         Helper $helper
-    )
-    {
+    ) {
+    
         $this->client = $api->getClient();
         $this->helper = $helper;
         parent::__construct($context);
@@ -57,6 +57,4 @@ class Redemption extends AbstractHelper
         ];
         $this->client->redemptions->redeem($code, $params);
     }
-
-
 }

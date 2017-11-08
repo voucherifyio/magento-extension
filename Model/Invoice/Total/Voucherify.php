@@ -19,7 +19,8 @@ class Voucherify extends AbstractTotal
     /**
      * @param VoucherDataRepositoryInterface $voucherDataRepository
      */
-    public function __construct(VoucherDataRepositoryInterface $voucherDataRepository){
+    public function __construct(VoucherDataRepositoryInterface $voucherDataRepository)
+    {
         $this->voucherDataRepository = $voucherDataRepository;
     }
 

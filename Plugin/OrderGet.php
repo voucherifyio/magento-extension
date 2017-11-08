@@ -19,7 +19,8 @@ class OrderGet
     /**
      * @param VoucherDataRepositoryInterface $voucherDataRepository
      */
-    public function __construct(VoucherDataRepositoryInterface $voucherDataRepository){
+    public function __construct(VoucherDataRepositoryInterface $voucherDataRepository)
+    {
         $this->voucherDataRepository = $voucherDataRepository;
     }
 
@@ -39,5 +40,4 @@ class OrderGet
         }
         return $order;
     }
-
 }

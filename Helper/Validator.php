@@ -63,8 +63,8 @@ class Validator extends AbstractHelper
         VoucherifyApi $api,
         CheckoutSession $checkoutSession,
         Helper $helper
-    )
-    {
+    ) {
+    
         $this->scopeConfig = $scopeConfig;
         $this->client = $api->getClient();
         $this->quoteRepository = $quoteRepository;
@@ -86,9 +86,10 @@ class Validator extends AbstractHelper
         }
 
         $extensionAttributes = $quote->getExtensionAttributes();
-        if ( $extensionAttributes && !is_null($extensionAttributes->getVoucherCode()) ) {
+        if ($extensionAttributes && !is_null($extensionAttributes->getVoucherCode())) {
             $voucherCode = $extensionAttributes->getVoucherCode();
-            $validated = $this->check($voucherCode,
+            $validated = $this->check(
+                $voucherCode,
                 $quote,
                 $extensionAttributes->getVoucherType(),
                 $extensionAttributes->getVoucherPercentOff(),
@@ -123,18 +124,23 @@ class Validator extends AbstractHelper
     {
         $params = $this->generateParams($quote);
         $response = $this->client->validations->validateVoucher($voucherCode, $params);
-        if (!$response->valid)
+        if (!$response->valid) {
             return false;
+        }
 
         if (isset($response->gift)) {
             if ((VoucherManagement::VOUCHER_TYPE_GIFT != $type) ||
                 (!isset($response->gift->amount) || $amountOff != $response->gift->balance)
-            ) return false;
+            ) {
+                return false;
+            }
         } elseif (isset($response->discount)) {
             if (($response->discount->type != $type) ||
                 (!is_null($amountOff) && (!isset($response->discount->amount_off) || $amountOff != $response->discount->amount_off)) ||
                 (!is_null($percentOff) && (!isset($response->discount->percent_off) || $percentOff != $response->discount->percent_off))
-            ) return false;
+            ) {
+                return false;
+            }
         } else {
             return false;
         }
@@ -156,5 +162,4 @@ class Validator extends AbstractHelper
             ]
         ];
     }
-
 }

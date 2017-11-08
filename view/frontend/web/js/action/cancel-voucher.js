@@ -10,8 +10,17 @@ define([
     'Magento_Checkout/js/model/full-screen-loader',
     'Voucherify_Integration/js/action/default/cancel-coupon',
     'Voucherify_Integration/js/lib/voucherify'
-], function (ko, $, errorProcessor, messageContainer, storage, $t, getPaymentInformationAction,
-             totals, fullScreenLoader, cancelCouponAction
+], function (
+    ko,
+    $,
+    errorProcessor,
+    messageContainer,
+    storage,
+    $t,
+    getPaymentInformationAction,
+    totals,
+    fullScreenLoader,
+    cancelCouponAction
 ) {
     'use strict';
 

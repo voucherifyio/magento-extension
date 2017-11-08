@@ -12,8 +12,19 @@ define([
     'Magento_Customer/js/model/customer',
     'Voucherify_Integration/js/action/default/set-coupon-code',
     'Voucherify_Integration/js/lib/voucherify'
-], function (ko, $, quote, errorProcessor, messageContainer, storage, $t, getPaymentInformationAction,
-             totals, fullScreenLoader, customer, setCouponCodeAction
+], function (
+    ko,
+    $,
+    quote,
+    errorProcessor,
+    messageContainer,
+    storage,
+    $t,
+    getPaymentInformationAction,
+    totals,
+    fullScreenLoader,
+    customer,
+    setCouponCodeAction
 ) {
     'use strict';
 
@@ -21,7 +32,8 @@ define([
     var quoteId = window.checkoutConfig.quoteData.entity_id;
 
     //generate items array for voucherify
-    function getQuoteItems () {
+    function getQuoteItems()
+    {
         var quoteItems = quote.getItems();
         var items = [];
         for (var item in quoteItems) {
@@ -33,7 +45,8 @@ define([
         return items;
     }
 
-    function getAmount () {
+    function getAmount()
+    {
         var totals = quote.totals();
         var amount;
         switch (config.behaviour.apply_source_type) {
@@ -53,7 +66,8 @@ define([
         return amount * 100;
     }
 
-    function getCustomer () {
+    function getCustomer()
+    {
         return {
             "source_id": (quote.guestEmail != null)?quote.guestEmail:customer.customerData.email,
             "email": (quote.guestEmail != null)?quote.guestEmail:customer.customerData.email,
@@ -62,7 +76,8 @@ define([
         };
     }
 
-    function apply (code, discount, isApplied, isOriginal) {
+    function apply(code, discount, isApplied, isOriginal)
+    {
         discount.voucher_code = code;
         storage.put(
             "rest/default/V1/voucherify/apply/cart/"+quoteId,
@@ -92,7 +107,8 @@ define([
     }
 
 
-    function applyGift(code, gift, isApplied, isOriginal ) {
+    function applyGift(code, gift, isApplied, isOriginal )
+    {
         var discount = {
             "voucher_code": code,
             "type": "GIFT",
@@ -137,7 +153,7 @@ define([
             "customer": getCustomer()
         };
 
-        if(config.clientSide.apiId == null || config.clientSide.apiId == '' || config.clientSide.secretKey == null || config.clientSide.secretKey == ''){
+        if (config.clientSide.apiId == null || config.clientSide.apiId == '' || config.clientSide.secretKey == null || config.clientSide.secretKey == '') {
             fullScreenLoader.stopLoader();
             isApplied(false);
             voucherCode('');
@@ -152,9 +168,10 @@ define([
             config.clientSide.secretKey
         );
 
-        Voucherify.validate(params, function callback (response) {
+        Voucherify.validate(params, function callback(response)
+        {
             if (response.valid) {
-                if(response.gift != undefined) {
+                if (response.gift != undefined) {
                     applyGift(response.code, response.gift, isApplied, isOriginal);
                 } else if (response.discount != undefined) {
                     if (response.discount.type == "AMOUNT" && params.amount <= response.discount.amount_off) {
@@ -166,7 +183,6 @@ define([
                         apply(response.code, response.discount, isApplied, isOriginal);
                     }
                 }
-
             } else {
                 fullScreenLoader.stopLoader();
                 setCouponCodeAction(voucherCode, isApplied, isOriginal);

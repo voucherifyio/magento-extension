@@ -23,8 +23,8 @@ class Voucherify extends AbstractTotal
     const CODE = 'voucherify_discount';
 
     /**
-    * @var \Magento\Framework\Pricing\PriceCurrencyInterface
-    */
+     * @var \Magento\Framework\Pricing\PriceCurrencyInterface
+     */
     protected $_priceCurrency;
 
     /**
@@ -53,7 +53,7 @@ class Voucherify extends AbstractTotal
         MessageManagerInterface $messageManager,
         VoucherDataRepositoryInterface $voucherDataRepository,
         Helper $helper
-    ){
+    ) {
         $this->_priceCurrency = $priceCurrency;
         $this->messageManager = $messageManager;
         $this->voucherDataRepository = $voucherDataRepository;
@@ -72,12 +72,12 @@ class Voucherify extends AbstractTotal
         Quote $quote,
         ShippingAssignmentInterface $shippingAssignment,
         AddressTotal $total
-    )
-    {
+    ) {
+    
         parent::collect($quote, $shippingAssignment, $total);
 
         $extensionAttributes = $quote->getExtensionAttributes();
-        if($extensionAttributes){
+        if ($extensionAttributes) {
             if ($extensionAttributes->getVoucherCode() && $total->getTotalAmount('subtotal') > 0) {
                 $baseDiscount = $this->getDiscountAmount($extensionAttributes, $quote);
 
@@ -98,7 +98,7 @@ class Voucherify extends AbstractTotal
                     $total->setDiscountAmount(-$discount);
                     $total->setBaseDiscountAmount(-$baseDiscount);
                     $total->setSubtotalWithDiscount($total->getSubtotal() - $discount);
-                    $total->setBaseSubtotalWithDiscount($total->getBaseSubtotal() - $baseDiscount );
+                    $total->setBaseSubtotalWithDiscount($total->getBaseSubtotal() - $baseDiscount);
                 } else {
                     $this->messageManager->addErrorMessage(__("The discount amount is bigger than your cart total."));
                     $this->voucherDataRepository->deleteByQuoteId($quote->getId());
@@ -120,19 +120,17 @@ class Voucherify extends AbstractTotal
      */
     private function getDiscountAmount(
         CartExtensionInterface $extensionAttributes,
-        Quote  $quote)
-    {
+        Quote $quote
+    ) {
+    
         $discountableAmount = $this->helper->getDiscountableAmountByQuote($quote);
 
         if ($extensionAttributes->getVoucherType() == VoucherManagement::VOUCHER_TYPE_AMOUNT) {
-
             if (!is_numeric($extensionAttributes->getVoucherAmountOff())) {
                 throw new Exception(__("The discount value for given voucher is Empty"));
             }
             return $extensionAttributes->getVoucherAmountOff()/100;
-
         } elseif ($extensionAttributes->getVoucherType() == VoucherManagement::VOUCHER_TYPE_PERCENT) {
-
             if (!is_numeric($extensionAttributes->getVoucherPercentOff())) {
                 throw new Exception(__("The discount value for given voucher is Empty"));
             }
@@ -142,8 +140,7 @@ class Voucherify extends AbstractTotal
                 $discount = ($limit<$discount)?$limit:$discount;
             }
             return $discount;
-
-        }elseif ($extensionAttributes->getVoucherType() == VoucherManagement::VOUCHER_TYPE_GIFT) {
+        } elseif ($extensionAttributes->getVoucherType() == VoucherManagement::VOUCHER_TYPE_GIFT) {
             if (!is_numeric($extensionAttributes->getVoucherAmountOff())) {
                 throw new Exception(__("The discount value for given voucher is Empty"));
             }
@@ -155,7 +152,7 @@ class Voucherify extends AbstractTotal
             return $extensionAttributes->getVoucherAmountOff()/100;
         } elseif ($extensionAttributes->getVoucherType() == VoucherManagement::VOUCHER_TYPE_UNIT) {
             throw new Exception(__("Unit discount type is not supported"));
-        }  else {
+        } else {
             throw new Exception(__("Empty discount type"));
         }
     }

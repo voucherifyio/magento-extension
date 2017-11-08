@@ -18,7 +18,7 @@ class Data extends AbstractHelper
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig
-    ){
+    ) {
         $this->scopeConfig = $scopeConfig;
     }
 
@@ -117,21 +117,21 @@ class Data extends AbstractHelper
     public function getDiscountableAmount($baseSubtotal, $baseShippingAmount, $baseTaxAmount)
     {
         switch ($this->scopeConfig->getValue('voucherifyintegration_general/behaviour/apply_source_type')) {
-            case AmountSourceType::SUBTOTAL :
+            case AmountSourceType::SUBTOTAL:
             default:
                 $discountableAmount = $baseSubtotal;
                 break;
-            case AmountSourceType::SUBTOTAL_SHIPPING :
+            case AmountSourceType::SUBTOTAL_SHIPPING:
                 $discountableAmount =
                     $baseSubtotal
                     + $baseShippingAmount;
                 break;
-            case AmountSourceType::SUBTOTAL_TAX :
+            case AmountSourceType::SUBTOTAL_TAX:
                 $discountableAmount =
                     $baseSubtotal
                     + $baseTaxAmount;
                 break;
-            case AmountSourceType::SUBTOTAL_SHIPPING_TAX :
+            case AmountSourceType::SUBTOTAL_SHIPPING_TAX:
                 $discountableAmount =
                     $baseSubtotal
                     + $baseShippingAmount
@@ -166,6 +166,4 @@ class Data extends AbstractHelper
             $order->getBaseTaxAmount()
         );
     }
-
-
 }

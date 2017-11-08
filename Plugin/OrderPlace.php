@@ -48,7 +48,7 @@ class OrderPlace
         $cartId,
         PaymentInterface $paymentMethod,
         AddressInterface $billingAddress = null
-    ){
+    ) {
         /** @var  \Magento\Quote\Model\Quote $quote */
         $quote = $this->quoteRepository->getActive($cartId);
         $this->validator->validate($quote);

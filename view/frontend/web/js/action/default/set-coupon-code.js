@@ -18,8 +18,18 @@ define([
     'Magento_Checkout/js/action/get-payment-information',
     'Magento_Checkout/js/model/totals',
     'Magento_Checkout/js/model/full-screen-loader'
-], function (ko, $, quote, urlManager, errorProcessor, messageContainer, storage, $t, getPaymentInformationAction,
-    totals, fullScreenLoader
+], function (
+    ko,
+    $,
+    quote,
+    urlManager,
+    errorProcessor,
+    messageContainer,
+    storage,
+    $t,
+    getPaymentInformationAction,
+    totals,
+    fullScreenLoader
 ) {
     'use strict';
 

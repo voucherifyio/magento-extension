@@ -78,7 +78,8 @@ class SuccessMessages extends Text
     /**
      * @return bool|string
      */
-    private function getDiscountMessage(){
+    private function getDiscountMessage()
+    {
         $voucherData = $this->voucherDataRepository->getByQuoteId($this->order->getQuoteId());
         if ($voucherData->getId()) {
             $message = 'You redeemed the voucher <b>"' . $voucherData->getVoucherCode() . '"</b>. <br>';
@@ -88,6 +89,4 @@ class SuccessMessages extends Text
         }
         return false;
     }
-
-
 }

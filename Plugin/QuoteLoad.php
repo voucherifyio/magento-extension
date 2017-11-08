@@ -18,7 +18,8 @@ class QuoteLoad
     /**
      * @param VoucherDataRepositoryInterface $voucherDataRepository
      */
-    public function __construct(VoucherDataRepositoryInterface $voucherDataRepository){
+    public function __construct(VoucherDataRepositoryInterface $voucherDataRepository)
+    {
         $this->voucherDataRepository = $voucherDataRepository;
     }
 
@@ -32,7 +33,7 @@ class QuoteLoad
         $quote
     ) {
         $extensionAttributes = $quote->getExtensionAttributes();
-        if($extensionAttributes){
+        if ($extensionAttributes) {
             $voucherData = $this->voucherDataRepository->getByQuoteId($quote->getId());
 
             $quote->setVoucherData($voucherData->getData()); // for direct access on checkout;
@@ -45,5 +46,4 @@ class QuoteLoad
         }
         return $quote;
     }
-
 }

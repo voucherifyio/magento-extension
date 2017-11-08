@@ -1,5 +1,6 @@
 <?php
 namespace Voucherify\Integration\Model;
+
 use Voucherify\Integration\Api\VoucherDataRepositoryInterface;
 use Voucherify\Integration\Model\ResourceModel\VoucherData as VoucherDataResource;
 use Magento\Framework\Exception\CouldNotDeleteException;
@@ -28,7 +29,7 @@ class VoucherDataRepository implements VoucherDataRepositoryInterface
     public function __construct(
         VoucherDataFactory $voucherDataFactory,
         VoucherDataResource $voucherDataResource
-    ){
+    ) {
         $this->voucherDataFactory = $voucherDataFactory;
         $this->resource = $voucherDataResource;
     }
