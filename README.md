@@ -19,3 +19,15 @@
 
  - Open Magento Admin Panel website and login
  - Go to `Stores/Configuration`. Under the Voucherify tab you must provide Voucherify api-keys. Once done, Customers will be able to provide and validate coupon code on the latest step of the checkout process.
+
+ <p align="center" >
+  <img src="./docs/images/magento-configuration.png" />
+</p>
+
+## Usage
+
+ - Checkout summary page with Voucherify Discount Code apply form
+
+<p align="center" >
+  <img src="./docs/images/magento-checkout.png" />
+</p>
