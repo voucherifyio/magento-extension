@@ -6,5 +6,10 @@
                 <prevent_order_creating>1</prevent_order_creating>
             </behaviour>
         </voucherifyintegration_general>
+        <voucherifyintegration_api>
+            <commons>
+                <api_url>https://api.voucherify.io</api_url>
+            </commons>
+        </voucherifyintegration_api>
     </default>
 </config>
