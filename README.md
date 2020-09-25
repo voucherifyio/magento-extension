@@ -14,7 +14,7 @@
     $ bin/magento setup:di:compile
     $ bin/magento cache:clean
 
-    # Voucherify extension depends on Voucherify PHP SKD package. Please install it, by executing in addition:
+    # Voucherify extension depends on Voucherify PHP SDK package. Please install it, by executing in addition:
     $ composer require rspective/voucherify
 ```
 
