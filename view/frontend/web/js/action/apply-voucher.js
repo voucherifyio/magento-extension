@@ -148,6 +148,7 @@ define([
         }
 
         Voucherify.initialize(
+            config.clientSide.apiUrl,
             config.clientSide.apiId,
             config.clientSide.secretKey
         );

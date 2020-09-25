@@ -27,6 +27,12 @@
             <class>separator-top</class>
             <label>Api Configuration</label>
             <tab>voucherifyintegration</tab>
+            <group id="commons" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Application settings</label>
+                <field id="api_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API URL</label>
+                </field>
+            </group>
             <group id="backend" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Application API settings</label>
                 <field id="api_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">

@@ -50,12 +50,15 @@ class Api extends  AbstractHelper
     public function getClient()
     {
         if ($this->client === null) {
+            $apiUrl = $this->scopeConfig->getValue('voucherifyintegration_api/commons/api_url');
             $apiId = $this->scopeConfig->getValue('voucherifyintegration_api/backend/api_id');
             $apiKey = $this->scopeConfig->getValue('voucherifyintegration_api/backend/api_key');
             if ($apiId && $apiKey) {
                 $this->client = $this->objectManager->create(VoucherifyClient::class, [
                     'apiId' => $apiId,
-                    'apiKey' => $apiKey
+                    'apiKey' => $apiKey,
+                    'apiVersion' => null,
+                    'apiUrl' => $apiUrl,
                 ]);
             }
         }

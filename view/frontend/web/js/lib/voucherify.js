@@ -2,13 +2,18 @@ window.Voucherify = (function (window, document, $) {
     "use strict";
 
     var API_BASE = "https://api.voucherify.io";
+    var API = {};
 
-    var API = {
-        validate: API_BASE + "/client/v1/validate",
-        redeem:   API_BASE + "/client/v1/redeem",
-        publish:  API_BASE + "/client/v1/publish",
-        list:     API_BASE + "/client/v1/vouchers"
-    };
+    function setAPI (apiUrl) {
+        apiUrl = apiUrl || API_BASE;
+
+        API = {
+            validate: apiUrl + "/client/v1/validate",
+            redeem:   apiUrl + "/client/v1/redeem",
+            publish:  apiUrl + "/client/v1/publish",
+            list:     apiUrl + "/client/v1/vouchers"
+        };
+    }
 
     var OPTIONS = {};
 
@@ -203,7 +208,9 @@ window.Voucherify = (function (window, document, $) {
     }
 
     var voucherify = {
-        initialize: function (clientAppId, token, timeout) {
+        initialize: function (apiUrl, clientAppId, token, timeout) {
+            setAPI(apiUrl);
+
             OPTIONS.applicationId = clientAppId;
             OPTIONS.token = token;
             OPTIONS.timeout = timeout || 5000;

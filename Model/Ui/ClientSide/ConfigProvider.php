@@ -32,6 +32,7 @@ class ConfigProvider implements ConfigProviderInterface
         return [
             'voucherify' => [
                 'clientSide' => [
+                    'apiUrl' => $this->scopeConfig->getValue('voucherifyintegration_api/commons/api_url'),
                     'apiId' => $this->scopeConfig->getValue('voucherifyintegration_api/frontend/api_id'),
                     'secretKey' => $this->scopeConfig->getValue('voucherifyintegration_api/frontend/secret_key')
                 ],
