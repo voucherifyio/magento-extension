@@ -158,14 +158,7 @@ define([
                 if(response.gift != undefined) {
                     applyGift(response.code, response.gift, isApplied, isOriginal);
                 } else if (response.discount != undefined) {
-                    if (response.discount.type == "AMOUNT" && params.amount <= response.discount.amount_off) {
-                        messageContainer.addErrorMessage({
-                            'message': $t("The discount amount is bigger than your cart total.")
-                        });
-                        fullScreenLoader.stopLoader();
-                    } else {
-                        apply(response.code, response.discount, isApplied, isOriginal);
-                    }
+                    apply(response.code, response.discount, isApplied, isOriginal);
                 }
 
             } else {

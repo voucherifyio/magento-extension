@@ -77,36 +77,26 @@ class Voucherify extends AbstractTotal
         parent::collect($quote, $shippingAssignment, $total);
 
         $extensionAttributes = $quote->getExtensionAttributes();
-        if($extensionAttributes){
+        if($extensionAttributes) {
             if ($extensionAttributes->getVoucherCode() && $total->getTotalAmount('subtotal') > 0) {
                 $baseDiscount = $this->getDiscountAmount($extensionAttributes, $quote);
+                $discount =  $this->_priceCurrency->convert($baseDiscount);
 
-                if ($baseDiscount <= $this->helper->getDiscountableAmountByQuote($quote)) {
-                    $discount =  $this->_priceCurrency->convert($baseDiscount);
+                $total->addTotalAmount(self::CODE, -$discount);
+                $total->addBaseTotalAmount(self::CODE, -$baseDiscount);
 
-                    $total->addTotalAmount(self::CODE, -$discount);
-                    $total->addBaseTotalAmount(self::CODE, -$baseDiscount);
-
-                    //decline native discount if exists
-                    $total->addTotalAmount('discount', -($total->getTotalAmount('discount')));
-                    $total->addBaseTotalAmount('discount', -($total->getBaseTotalAmount('discount')));
-                    foreach ($quote->getAllItems() as $item) {
-                        $item->setDiscountAmount(0);
-                        $item->setDiscountPercent(0);
-                    }
-
-                    $total->setDiscountAmount(-$discount);
-                    $total->setBaseDiscountAmount(-$baseDiscount);
-                    $total->setSubtotalWithDiscount($total->getSubtotal() - $discount);
-                    $total->setBaseSubtotalWithDiscount($total->getBaseSubtotal() - $baseDiscount );
-                } else {
-                    $this->messageManager->addErrorMessage(__("The discount amount is bigger than your cart total."));
-                    $this->voucherDataRepository->deleteByQuoteId($quote->getId());
-                    $extensionAttributes->setVoucherCode(null);
-                    $extensionAttributes->setVoucherType(null);
-                    $extensionAttributes->setVoucherPercentOff(null);
-                    $extensionAttributes->setVoucherAmountOff(null);
+                //decline native discount if exists
+                $total->addTotalAmount('discount', -($total->getTotalAmount('discount')));
+                $total->addBaseTotalAmount('discount', -($total->getBaseTotalAmount('discount')));
+                foreach ($quote->getAllItems() as $item) {
+                    $item->setDiscountAmount(0);
+                    $item->setDiscountPercent(0);
                 }
+
+                $total->setDiscountAmount(-$discount);
+                $total->setBaseDiscountAmount(-$baseDiscount);
+                $total->setSubtotalWithDiscount($total->getSubtotal() - $discount);
+                $total->setBaseSubtotalWithDiscount($total->getBaseSubtotal() - $baseDiscount );
             }
         }
         return $this;
@@ -129,7 +119,11 @@ class Voucherify extends AbstractTotal
             if (!is_numeric($extensionAttributes->getVoucherAmountOff())) {
                 throw new Exception(__("The discount value for given voucher is Empty"));
             }
-            return $extensionAttributes->getVoucherAmountOff()/100;
+            $voucherAmount = $extensionAttributes->getVoucherAmountOff()/100;
+            if ($voucherAmount > $discountableAmount) {
+                return $discountableAmount;
+            }
+            return $voucherAmount;
 
         } elseif ($extensionAttributes->getVoucherType() == VoucherManagement::VOUCHER_TYPE_PERCENT) {
 
@@ -143,7 +137,7 @@ class Voucherify extends AbstractTotal
             }
             return $discount;
 
-        }elseif ($extensionAttributes->getVoucherType() == VoucherManagement::VOUCHER_TYPE_GIFT) {
+        } elseif ($extensionAttributes->getVoucherType() == VoucherManagement::VOUCHER_TYPE_GIFT) {
             if (!is_numeric($extensionAttributes->getVoucherAmountOff())) {
                 throw new Exception(__("The discount value for given voucher is Empty"));
             }
