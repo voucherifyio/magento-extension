@@ -1,3 +1,7 @@
+```diff
+- ! THIS INTEGRATION IS DEPRECATED ! -
+```
+
 # Magento - Voucherify Integration
 
 ## Installation
